@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget{
             height: 350,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/banner.jpg"),
+                image: AssetImage("assets/images/banner.jpg"),
                 fit: BoxFit.cover,
               ),
             ),

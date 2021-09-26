@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:scroll_navigation/scroll_navigation.dart';
+import 'package:oakly/Details.dart';
 
 class HomePage extends StatelessWidget{
 
@@ -17,90 +21,284 @@ class HomePage extends StatelessWidget{
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search_outlined),
-            onPressed: () {},
-          ),
-          IconButton(
             icon: Icon(Icons.shopping_cart_outlined),
             onPressed: () { },
           ),
         ],
       ),
 
-      body: Container(
-        child: Column(
-          children: [
-            SizedBox(height: 10,width: 10,),
-            Text("Shop Modern Designed Furnitures!",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-              ),),
-            SizedBox(height: 30,),
-            Expanded(child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    blurRadius: 20,
-                  ),
-                ],
-              ),
-              child: Column(
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 70,width: 20,),
-                      Text("Chairs",
-                        style: TextStyle(
-                        fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                      ),),
-                      SizedBox(width: 20,),
-                      Text("Sofas"),
-                      SizedBox(width: 20,),
-                      Text("Tables"),
-                      SizedBox(width: 20,),
-                      Text("Cupboards"),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            height: 120,
-                              width: 170,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                  child: Image.asset('assets/chair1.jpg', fit: BoxFit.cover,),
-                              ),),
-                            SizedBox(height: 10,),
-                          Text("Yellow Chair",style: TextStyle(
-                            fontSize: 15
-                          ),),
-                          SizedBox(height: 10,),
-                          Text("\$24", style: TextStyle(
-                            fontSize: 15
-                          ),),
-                        ],
-                      )
-                    ],
-                  ),
+              SizedBox(height: 10,width: 25,),
+              Text("What are you\nlooking for?",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),),
                 ],
               ),
-            ),),
-          ],
-        ),
+
+              SizedBox(height: 20,),
+
+              Container(
+                width: 310,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey[200],
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(width: 10,),
+                    Icon(
+                      FontAwesomeIcons.search,
+                    ),
+                    SizedBox(width: 20,),
+                    Text("Search Here..."),
+                  ],
+                ),
+              ),
+
+
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(height: 70,),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      onPrimary: Colors.black,
+                      primary: Colors.grey,
+                      minimumSize: const Size(30,30),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                    ),
+                    child: const Text("All"),
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => Details()));
+                          },
+                        ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      onPrimary: Colors.white,
+                      primary: Colors.black,
+                      minimumSize: const Size(30,30),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                    ),
+                    child: const Text("Chairs"),
+                    onPressed: () {},
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      onPrimary: Colors.white,
+                      primary: Colors.black,
+                      minimumSize: const Size(30,30),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                    ),
+                    child: const Text("Sofas"),
+                    onPressed: () {},
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      onPrimary: Colors.white,
+                      primary: Colors.black,
+                      minimumSize: const Size(30,30),
+                      shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)
+                      ),
+                    ),
+                    child: const Text("Tables"),
+                    onPressed: () {},
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      onPrimary: Colors.white,
+                      primary: Colors.black,
+                      minimumSize: const Size(30,30),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                    ),
+                    child: const Text("Beds"),
+                    onPressed: () {},
+                  ),
+                ],
+                    ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/chair1.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/sofa1.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/bed1.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/table1.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/chair2.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/sofa2.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/bed2.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/table2.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/chair3.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/sofa3.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/bed3.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/table3.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/chair4.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/sofa4.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/bed4.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/table4.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/chair5.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/sofa5.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/bed5.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/table5.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/chair6.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/sofa6.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+              SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProductDesign(image: 'assets/images/bed6.jpg', name: 'Yellow chair', price: '\$250'),
+                  ProductDesign(image: 'assets/images/table6.jpg', name: 'Yellow chair', price: '\$250'),
+                ],
+              ),
+
+
+
+
+
+                  ],
+                ),
+              ),
       ),
     );
   }
+}
+
+class ProductDesign extends StatelessWidget {
+  const  ProductDesign({
+    Key? key,
+    required this.image,
+    required this.name,
+    required this.price,
+}) : super(key: key);
+
+  final String image;
+  final String name;
+  final String price;
+
+@override
+Widget build(BuildContext context){
+  return GestureDetector(
+
+    child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              height: 150,
+              width: 160,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(image ,fit: BoxFit.cover,),
+              ),
+            ),
+            SizedBox(height: 10,),
+            Text(name),
+            SizedBox(height: 10,),
+            Text(price),
+          ],
+        ),
+    );
+}
 }
