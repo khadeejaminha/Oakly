@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oakly/LoginPage.dart';
+import 'package:oakly/loginpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,18 +8,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Furniture App',
-        theme: ThemeData(
-        appBarTheme: AppBarTheme(
-        iconTheme: IconThemeData(color: Colors.black),
-    ),),
+    return const MaterialApp(
+      title: 'OAKLY Designed Furnitures - Furniture App',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: Loginpage(),
     );
   }
 }
-

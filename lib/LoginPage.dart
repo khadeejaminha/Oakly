@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:oakly/HomePage.dart';
+import 'package:oakly/homepage.dart';
 
-class LoginPage extends StatelessWidget{
+class Loginpage extends StatelessWidget{
+  const Loginpage({Key? key}) : super(key: key);
   get style => null;
 
   @override
@@ -101,7 +102,7 @@ class LoginPage extends StatelessWidget{
                   child: const Text("Login"),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                        MaterialPageRoute(builder: (context) => const Homepage()));
                     },
                 ),
 
@@ -129,6 +130,7 @@ class LoginPage extends StatelessWidget{
           ),
         ],
       ),
+
     );
 
   }
