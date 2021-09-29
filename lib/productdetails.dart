@@ -6,9 +6,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:oakly/homepage.dart';
 
-class Productdetails extends StatelessWidget {
+class ProductDetails extends StatelessWidget {
 
-  const  Productdetails({
+  const  ProductDetails({
     Key? key,
     required this.image,
     required this.name,
@@ -31,6 +31,7 @@ class Productdetails extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
+          color: Colors.black,
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const Homepage()));
@@ -42,10 +43,12 @@ class Productdetails extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart_outlined),
+            color: Colors.black,
             onPressed: () { },
           ),
           IconButton(
             icon: const Icon(Icons.favorite_outline_rounded),
+            color: Colors.black,
             onPressed: () { },
           ),
         ],

@@ -6,6 +6,12 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:oakly/loginpage.dart';
 import 'package:oakly/productdetails.dart';
+import 'package:oakly/chairs.dart';
+import 'package:oakly/sofas.dart';
+import 'package:oakly/tables.dart';
+import 'package:oakly/beds.dart';
+
+
 
 class Homepage extends StatelessWidget{
   const Homepage({Key? key}) : super(key: key);
@@ -22,6 +28,7 @@ class Homepage extends StatelessWidget{
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
+          color: Colors.black,
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const Loginpage()));
@@ -30,14 +37,18 @@ class Homepage extends StatelessWidget{
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart_outlined),
+            color: Colors.black,
             onPressed: () { },
           ),
           IconButton(
             icon: const Icon(Icons.favorite_outline_rounded),
+            color: Colors.black,
             onPressed: () { },
           ),
         ],
       ),
+
+
 
       body: SingleChildScrollView(
         child: Column(
@@ -79,20 +90,87 @@ class Homepage extends StatelessWidget{
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                SizedBox(height: 70,),
-                ProductButtons(text: 'All'),
-                ProductButtons(text: 'Chairs'),
-                ProductButtons(text: 'Sofas'),
-                ProductButtons(text: 'Tables'),
-                ProductButtons(text: 'Beds'),
+              children: [
+                const SizedBox(height: 70,),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.grey,
+                    minimumSize: const Size(30,30),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                  ),
+                  child: const Text('All'),
+                  onPressed: () {},
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.black,
+                    minimumSize: const Size(30,30),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                  ),
+                  child:  const Text('Chairs'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Chairs()));
+                  },
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.black,
+                    minimumSize: const Size(30,30),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                  ),
+                  child:  const Text('Sofas'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Sofas()));
+                  },
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.black,
+                    minimumSize: const Size(30,30),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                  ),
+                  child:  const Text('Tables'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Tables()));
+                  },
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                    primary: Colors.black,
+                    minimumSize: const Size(30,30),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                  ),
+                  child:  const Text('Beds'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Beds()));
+                  },
+                ),
               ],
                   ),
 
 
                 Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
                 ProductLists(image: 'assets/images/chair1.jpg', name: 'Yellow chair', price: 'Rs. 5500'),
                 ProductLists(image: 'assets/images/sofa1.jpg', name: 'White Sofa', price: 'Rs. 15000'),
               ],
@@ -215,42 +293,6 @@ class Homepage extends StatelessWidget{
 }
 
 
-class ProductButtons extends StatelessWidget {
-  const  ProductButtons({
-    Key? key,
-    required this.text,
-  }) : super(key: key);
-
-  final String text;
-
-
-  @override
-  Widget build(BuildContext context){
-    return GestureDetector(
-
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          onPrimary: Colors.white,
-          primary: Colors.black,
-          minimumSize: const Size(30,30),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)
-          ),
-        ),
-        child:  Text(text),
-        onPressed: () {},
-      ),
-    );
-  }
-}
-
-
-
-
-
-
-
-
 class ProductLists extends StatelessWidget {
 
   const  ProductLists({
@@ -271,7 +313,7 @@ Widget build(BuildContext context){
     onTap: () {
       Navigator.push(context,
           MaterialPageRoute(
-              builder: (context) => Productdetails(
+              builder: (context) => ProductDetails(
                 image: image,
                 name: name,
                 price: price,
@@ -314,3 +356,5 @@ Widget build(BuildContext context){
     );
 }
 }
+
+
